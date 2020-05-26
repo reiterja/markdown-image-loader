@@ -99,8 +99,7 @@ module.exports = function loader(src, map, meta) {
             this.emitFile(outputPath, imageData);
         }
 
-        // The final resolved path will be the publicPath + url where url is computed from the name pattern in options.name
-        return outputPath;
+        return publicPath;
     };
 
     main();
