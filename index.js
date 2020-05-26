@@ -74,8 +74,6 @@ module.exports = function loader(src, map, meta) {
 
         let outputPath = url;
 
-        console.warn({ url });
-
         if (options.outputPath) {
             if (typeof options.outputPath === 'function') {
                 outputPath = options.outputPath(url, absoluteImagePath, context);
@@ -97,12 +95,11 @@ module.exports = function loader(src, map, meta) {
             publicPath = JSON.stringify(publicPath);
         }
 
-        console.warn({ publicPath });
-
         if (typeof options.emitFile === 'undefined' || options.emitFile) {
             this.emitFile(outputPath, imageData);
         }
 
+        // The final resolved path will be the publicPath + url where url is computed from the name pattern in options.name
         return outputPath;
     };
 
