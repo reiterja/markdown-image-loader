@@ -41,6 +41,7 @@ module.exports = function loader(src, map, meta) {
         }
 
         // For each image matching the pattern, replace it with it's resolved path
+        // Regex tester -> https://regex101.com/r/Rg9eWA/1
         let res = src.replace(/\(([\w-_~\/\.]+.(?:png|jpe?g|ico|gif))\)/gi, (match, imagePath) => {
             const resolvedPath = importImage(imagePath, src, options);
             // console.warn({ resolvedPath });
