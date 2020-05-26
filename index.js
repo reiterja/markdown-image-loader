@@ -13,8 +13,7 @@ const validateOptions = require('schema-utils');
  */
 module.exports = function loader(src, map, meta) {
     var callback = this.async(); // Set the loader to async mode
-    var options = loaderUtils.getOptions(this); // Get options
-    console.info({ options1: options });
+    var options = loaderUtils.getOptions(this) || {}; // Get options
 
     const main = () => {
         validate();
@@ -29,7 +28,6 @@ module.exports = function loader(src, map, meta) {
 
     // Validate configuration
     const validate = () => {
-        console.warn({ options });
         validateOptions(schema, options, {
             name: 'markdown-image-loader',
             baseDataPath: 'options',
