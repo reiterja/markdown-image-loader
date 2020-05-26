@@ -28,8 +28,9 @@ module.exports = function loader(src, map, meta) {
 
     // Validate configuration
     const validate = () => {
+        console.warn({ options });
         validateOptions(schema, options, {
-            name: 'File Loader',
+            name: 'markdown-image-loader',
             baseDataPath: 'options',
         });
     };
