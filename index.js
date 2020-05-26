@@ -28,8 +28,9 @@ function parse(src) {
     console.error(src);
   }
   
+  // For each image matching the pattern, replace it with it's resolved path
   let res = src.replace(/\(([\w-_~\/\.]+.(?:png|jpe?g|ico|gif))\)/ig, (imagePath) => {
-    console.info({imagePath});
+    console.warn({imagePath});
     // const fileName = `md`
     // let fileContents = fs.readFileSync(imagePath);
     // const resolvedPath = emitFile(fileName, fileContents);
