@@ -2,6 +2,7 @@ const path = require('path');
 const loaderUtils = require('loader-utils');
 const schema = require('./options.json');
 const validateOptions = require('schema-utils');
+const fs = require('fs');
 
 /**
  * Main loader method
