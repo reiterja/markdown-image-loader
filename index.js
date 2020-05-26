@@ -42,7 +42,3 @@ function parse(src) {
 
   return res;
 }
-
-// Tells webpack to preserve to treat the output as a string rather
-// than a module
-module.exports.raw = true;
