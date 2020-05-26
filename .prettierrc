@@ -1,0 +1,22 @@
+{
+    "endOfLine": "lf",
+    "jsxSingleQuote": true,
+    "printWidth": 120,
+    "useTabs": false,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "quoteProps": "as-needed",
+    "semi": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "jsxBracketSameLine": true,
+    "overrides": [
+        {
+            "files": "*.yml",
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
+}
