@@ -37,8 +37,8 @@ module.exports = function loader(src, map, meta) {
     // Find images in the markdown, replace with the imported path
     const parse = () => {
         if (typeof src != 'string') {
-            throw `Expected a string but got ${typeof src}`;
             console.error(src);
+            throw `Expected a string but got ${typeof src}`;
         }
 
         // For each image matching the pattern, replace it with it's resolved path
