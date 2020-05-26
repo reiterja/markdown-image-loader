@@ -90,6 +90,8 @@ module.exports = function loader(src, map, meta) {
         if (typeof options.emitFile === 'undefined' || options.emitFile) {
             this.emitFile(outputPath, src);
         }
+
+        return outputPath;
     };
 
     main();
