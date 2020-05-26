@@ -59,9 +59,7 @@ module.exports = function loader(src, map, meta) {
             .split(/[\/\\]/)
             .slice(0, -1)
             .join('/');
-        console.warn({ markDownFileFolder });
         const absoluteImagePath = path.resolve(markDownFileFolder, imagePath);
-        console.warn({ absoluteImagePath });
         const imageData = fs.readFileSync(absoluteImagePath);
 
         const url = loaderUtils.interpolateName(
@@ -75,6 +73,9 @@ module.exports = function loader(src, map, meta) {
         );
 
         let outputPath = url;
+
+        console.warn({ url });
+
         if (options.outputPath) {
             if (typeof options.outputPath === 'function') {
                 outputPath = options.outputPath(url, absoluteImagePath, context);
