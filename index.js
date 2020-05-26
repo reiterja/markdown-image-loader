@@ -53,9 +53,10 @@ module.exports = function loader(src, map, meta) {
 
     // Import the image and return the path
     // Based on https://github.com/webpack-contrib/file-loader/blob/master/src/index.js
-    const importImage = (img) => {
-        // the path should be absolute
-        const url = loaderUtils.interpolateName({ resourcePath: img }, options.name || '[contenthash].[ext]', {
+    const importImage = (imagePath) => {
+        const imageData = fs.readFileSync(imagePath);
+
+        const url = loaderUtils.interpolateName({ resourcePath: imagePath }, options.name || '[contenthash].[ext]', {
             context: this.rootContext,
             content: src,
             regExp: options.regExp,
@@ -73,7 +74,7 @@ module.exports = function loader(src, map, meta) {
 
         if (options.publicPath) {
             if (typeof options.publicPath === 'function') {
-                publicPath = options.publicPath(url, this.resourcePath, src);
+                publicPath = options.publicPath(url, this.resourcePath, imageData);
             } else {
                 publicPath = `${
                     options.publicPath.endsWith('/') ? options.publicPath : `${options.publicPath}/`
@@ -84,7 +85,7 @@ module.exports = function loader(src, map, meta) {
         }
 
         if (typeof options.emitFile === 'undefined' || options.emitFile) {
-            this.emitFile(outputPath, src);
+            this.emitFile(outputPath, imageData);
         }
 
         return outputPath;
