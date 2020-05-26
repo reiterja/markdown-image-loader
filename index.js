@@ -99,7 +99,7 @@ module.exports = function loader(src, map, meta) {
             this.emitFile(outputPath, imageData);
         }
 
-        return publicPath;
+        return publicPath.slice(1, -1); // remove the starting and trailing quotes
     };
 
     main();
