@@ -8,7 +8,7 @@
  * @todo: Add options
  */
 module.exports = function (src, map, meta) {
-  var callback = this.async;
+  var callback = this.async();
   try {
     const parsed = parse(src);
     callback(null, parsed, map, meta);
