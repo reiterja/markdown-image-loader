@@ -13,7 +13,7 @@ module.exports = function (src, map, meta) {
     const parsed = parse(src);
     callback(null, parsed, map, meta);
   } catch (e) {
-    callbackc(e);
+    callback(e);
   }
 };
 
