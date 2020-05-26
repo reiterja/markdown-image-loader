@@ -8,9 +8,10 @@ const fs = require('fs');
  * Main loader method
  *
  * References:
+ * - https://webpack.js.org/contribute/writing-a-loader/
  * - https://webpack.js.org/api/loaders/
- *S
- * @todo: Add options
+ *
+ * @todo: Add options for configuring the image types
  */
 module.exports = function loader(src, map, meta) {
     var callback = this.async(); // Set the loader to async mode
