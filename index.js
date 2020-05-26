@@ -55,7 +55,7 @@ module.exports = function loader(src, map, meta) {
     // Import the image and return the path
     // Based on https://github.com/webpack-contrib/file-loader/blob/master/src/index.js
     const importImage = (imagePath) => {
-        const imageData = fs.readFileSync(imagePath);
+        const imageData = fs.readFileSync(path.resolve(imagePath));
 
         const url = loaderUtils.interpolateName({ resourcePath: imagePath }, options.name || '[contenthash].[ext]', {
             context: this.rootContext,
