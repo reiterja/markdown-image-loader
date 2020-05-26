@@ -19,7 +19,6 @@ module.exports = function loader(src, map, meta) {
         validate();
         try {
             const parsed = parse();
-            console.warn({ parsed });
             callback(null, parsed, map, meta);
         } catch (e) {
             callback(e);
@@ -43,12 +42,8 @@ module.exports = function loader(src, map, meta) {
 
         // For each image matching the pattern, replace it with it's resolved path
         let res = src.replace(/\(([\w-_~\/\.]+.(?:png|jpe?g|ico|gif))\)/gi, (match, imagePath) => {
-            console.warn({ imagePath });
-            // const fileName = `md`
-            // let fileContents = fs.readFileSync(imagePath);
-            // const resolvedPath = emitFile(fileName, fileContents);
             const resolvedPath = importImage(imagePath, src, options);
-            console.warn({ resolvedPath });
+            // console.warn({ resolvedPath });
             return `(${resolvedPath})`;
         });
 
