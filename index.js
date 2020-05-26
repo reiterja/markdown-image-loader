@@ -1,3 +1,4 @@
+import path from 'path';
 import loaderUtils from 'loader-utils';
 import schema from './options.json';
 import validateOptions from 'schema-utils';
@@ -94,4 +95,4 @@ module.exports = function loader(src, map, meta) {
     main();
 };
 
-//export const raw = true;
+export const raw = true;
