@@ -67,7 +67,7 @@ module.exports = function loader(src, map, meta) {
             options.name || '[contenthash].[ext]',
             {
                 context: this.rootContext,
-                content: src,
+                content: imageData,
                 regExp: options.regExp,
             }
         );
@@ -84,8 +84,6 @@ module.exports = function loader(src, map, meta) {
             }
         }
         let publicPath = `__webpack_public_path__ + ${JSON.stringify(outputPath)}`;
-
-        console.warn({ publicPath });
 
         if (options.publicPath) {
             if (typeof options.publicPath === 'function') {
