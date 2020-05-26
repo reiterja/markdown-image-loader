@@ -14,6 +14,7 @@ const validateOptions = require('schema-utils');
 module.exports = function loader(src, map, meta) {
     var callback = this.async(); // Set the loader to async mode
     var options = loaderUtils.getOptions(this); // Get options
+    console.info({ options1: options });
 
     const main = () => {
         validate();
