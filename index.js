@@ -1,5 +1,5 @@
-import path from 'path';
-import loaderUtils from 'loader-utils';
+const path = require('path');
+const loaderUtils = require('loader-utils');
 import schema from './options.json';
 import validateOptions from 'schema-utils';
 
