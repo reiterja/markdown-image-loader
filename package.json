@@ -1,0 +1,19 @@
+{
+  "name": "markdown-image-loader",
+  "version": "1.0.0",
+  "description": "A loader for webpack that loads images from markdown files and returns the raw markdown",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reiterja/markdown-image-loader).git"
+  },
+  "author": "jacob.reiter@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reiterja/markdown-image-loader)/issues"
+  },
+  "homepage": "https://github.com/reiterja/markdown-image-loader)#readme"
+}
