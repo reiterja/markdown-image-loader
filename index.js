@@ -55,18 +55,29 @@ module.exports = function loader(src, map, meta) {
     // Import the image and return the path
     // Based on https://github.com/webpack-contrib/file-loader/blob/master/src/index.js
     const importImage = (imagePath) => {
-        const imageData = fs.readFileSync(path.resolve(imagePath));
+        const markDownFileFolder = this.resourcePath
+            .split(/[\/\\]/)
+            .slice(0, -1)
+            .join('/');
+        console.warn({ markDownFileFolder });
+        const absoluteImagePath = path.resolve(markDownFileFolder, imagePath);
+        console.warn({ absoluteImagePath });
+        const imageData = fs.readFileSync(absoluteImagePath);
 
-        const url = loaderUtils.interpolateName({ resourcePath: imagePath }, options.name || '[contenthash].[ext]', {
-            context: this.rootContext,
-            content: src,
-            regExp: options.regExp,
-        });
+        const url = loaderUtils.interpolateName(
+            { resourcePath: absoluteImagePath },
+            options.name || '[contenthash].[ext]',
+            {
+                context: this.rootContext,
+                content: src,
+                regExp: options.regExp,
+            }
+        );
 
         let outputPath = url;
         if (options.outputPath) {
             if (typeof options.outputPath === 'function') {
-                outputPath = options.outputPath(url, this.resourcePath, context);
+                outputPath = options.outputPath(url, absoluteImagePath, context);
             } else {
                 outputPath = path.posix.join(options.outputPath, url);
             }
@@ -75,7 +86,7 @@ module.exports = function loader(src, map, meta) {
 
         if (options.publicPath) {
             if (typeof options.publicPath === 'function') {
-                publicPath = options.publicPath(url, this.resourcePath, imageData);
+                publicPath = options.publicPath(url, absoluteImagePath, imageData);
             } else {
                 publicPath = `${
                     options.publicPath.endsWith('/') ? options.publicPath : `${options.publicPath}/`
