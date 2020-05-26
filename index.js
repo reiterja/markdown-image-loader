@@ -77,7 +77,7 @@ module.exports = function loader(src, map, meta) {
 
         if (options.publicPath) {
             if (typeof options.publicPath === 'function') {
-                publicPath = options.publicPath(url, this.resourcePath, context);
+                publicPath = options.publicPath(url, this.resourcePath, src);
             } else {
                 publicPath = `${
                     options.publicPath.endsWith('/') ? options.publicPath : `${options.publicPath}/`
@@ -88,7 +88,7 @@ module.exports = function loader(src, map, meta) {
         }
 
         if (typeof options.emitFile === 'undefined' || options.emitFile) {
-            this.emitFile(outputPath, content);
+            this.emitFile(outputPath, src);
         }
     };
 
