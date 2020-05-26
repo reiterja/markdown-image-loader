@@ -95,4 +95,4 @@ module.exports = function loader(src, map, meta) {
     main();
 };
 
-export const raw = true;
+module.exports.raw = true;
