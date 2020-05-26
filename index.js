@@ -85,6 +85,8 @@ module.exports = function loader(src, map, meta) {
         }
         let publicPath = `__webpack_public_path__ + ${JSON.stringify(outputPath)}`;
 
+        console.warn({ publicPath });
+
         if (options.publicPath) {
             if (typeof options.publicPath === 'function') {
                 publicPath = options.publicPath(url, absoluteImagePath, imageData);
@@ -96,6 +98,8 @@ module.exports = function loader(src, map, meta) {
 
             publicPath = JSON.stringify(publicPath);
         }
+
+        console.warn({ publicPath });
 
         if (typeof options.emitFile === 'undefined' || options.emitFile) {
             this.emitFile(outputPath, imageData);
